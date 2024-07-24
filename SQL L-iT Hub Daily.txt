@@ -1,0 +1,1299 @@
+-------------------------------------------------------------DAY-2:-----------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+create table MED (app number,
+                  name varchar(12),
+                  dob date,
+                  mobile number,
+                  city varchar);
+desc table med;
+
+alter table med rename to hosp;
+desc table hosp;
+
+
+select app, name, dob, mobile, city from hosp;
+
+select get_ddl ('table', hosp);
+
+select* from hosp;
+
+alter table hosp add column aadhaar number(12);
+desc table hosp;
+
+
+alter table hosp drop column city;
+
+alter table hosp add column bloodgroup varchar(2);
+
+alter table hosp rename column NO to serial; 
+
+alter table hosp alter column mobile set data type number(10);
+
+drop table hosp
+
+
+* create schema pranay;
+
+create table Bank (name varchar(15),
+                   ac number(15),
+                   dob date,
+                   mobile number(10),
+                   balance number);
+desc table Bank;
+
+alter table Bank  rename column balance to amount;
+alter table Bank add column due number(6);
+alter table Bank alter column amount set data type number(8);
+alter table Bank drop column dob;
+
+alter table Bank rename to SBI;
+desc table SBI;
+
+drop table SBI;
+
+
+* create table aadhaar(name varchar(12),
+                     dob date ,
+                     mobile number (10),
+                     address varchar,
+                     fathername varchar(15));
+select name, dob, mobile, address, fathername from aadhaar;
+select get_ddl ('table', 'aadhaar');
+
+desc table aadhaar;
+alter table aadhaar rename column sonof to Father; 
+alter table aadhaar add column mother varchar(12);
+alter table aadhaar alter column Father set data type varchar(16);
+
+alter table aadhaar alter column mobile set data type number;
+alter table aadhaar drop column address;
+ alter table aadhaar rename to ID;
+desc table ID;
+
+drop table ID;
+
+
+
+------------------------------------------------------------DAY-3:------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+*create table attendance( sno number(1),
+                         name varchar(15),
+                         roll number(5),
+                         address varchar);
+select SNO, NAME, ROLL, ADDRESS;
+select get_ddl('table','attendance');
+
+
+desc table attendance;
+
+insert into attendance values (1,'pranay',21,'palwancha');
+insert into attendance (sno,name,roll) values (2,'rohith',24);
+insert into attendance ( sno,name,address) values (3,'abdul', 'palwancha');
+ select * from attendance;
+ 
+
+ select sno,name,address from attendance;
+
+ insert into attendance(sno,name,address) values(4,'kumar','miryalaguda');
+
+ delete from attendance where roll=24;
+
+ update attendance set roll=4 where name='abdul';
+ 
+ select * from attendance where name='pranay';
+
+ select current_database(),current_schema(),current_user(),current_version();
+
+ select concat('dip','abdul')as name;
+ show tables;
+
+
+* create table sports(sno number(1),
+                     name varchar(12),
+                     type varchar(10),
+                     rank number(2));
+desc table sports;
+ select SNO, NAME, TYPE, RANK from sports;
+ select get_ddl ('table', 'sports');
+
+ insert into sports values (1,'pranay','kho-kho',1);
+ insert into sports (sno,name,type) values (2,'rohith','cricket');
+ insert into sports (sno,name,rank) values (3,'suresh',3);
+
+ select * from sports;
+
+ delete from sports where (name='suresh');
+
+
+ select name,type from sports;
+
+ select current_database(),current_user(),current_schema(),current_version();
+
+ truncate sports;
+
+
+ select concat('rohith','yadav');
+
+
+
+
+
+*create table cricket( name varchar(12),
+                      runs number(3)
+                      jersey number(3),
+                      wickets numbers(2));
+
+
+
+
+
+
+*create table hdfc (name varchar(15),
+                      ac number(16),
+                      balance number(8),
+                      dob date);
+--16 october 2002
+          
+
+desc table hdfc;
+
+insert into hdfc (name,ac,balance) values ('giripranay', 0456120100002032, 200);
+insert into hdfc (name,ac,balance,dob) values('giri', 3684905237, 300,'2024-06-13');
+
+--select *from hdfc;
+select current_date;
+
+select name,dob from hdfc  name;
+
+select *from hdfc;
+
+truncate hdfc;
+
+
+
+
+
+*create table axis(name varchar(15),
+                   phn number (10),
+                   balance number,
+                   salary number(7));
+
+
+
+select * from axis;
+insert into axis values('giri',6300050566,1087000,187000);
+insert into axis values ('rohith',9398292372,580000,120000);
+insert into axis (name,balance,salary) values ('abdul',1280000,135000);
+insert into axis values ('kumar',9573285804,980000,146000);
+
+update axis set phn=9347080793 where name='abdul';
+
+select name,salary from axis;
+
+delete from axis where name='kumar';
+select get_ddl('table','axis')
+truncate axis;
+
+desc table axis;
+
+
+
+
+*select 'padala'||'giri'||'pranay';
+
+
+*select initcap('padalagiripranay');
+
+
+
+
+------------------------------------------------------------DAY-4:------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+create table class(sno number(2),
+                   name varchar(15),
+                    rank number (2),
+                    gender varchar (6));
+desc table class;
+
+insert into class values (1,concat('Giri',' ','Pranay'), 1,'male');
+
+select * from class;
+
+insert into class (sno,name,gender) values (2,initcap(concat('abdul',' ','shareef')),'male');
+
+insert into class values (3,'rohith||yadav',4,'male');
+
+insert into class values (7,initcap('padala'||' '||'pranay'),8,'male');
+
+update class set  name=initcap(concat('giri',' ','pranay')) where rank=1;
+
+delete from class where name='rohith||yadav';
+
+
+select initcap(concat('padala',' ','giri',' ','pranay'));
+
+select substr('padalagiripranay',-4);
+select substr('padalagiripranay',10,6);
+
+select substr('padalagiripranay',-7,3);
+select substr('rohithyadav',-7,5);
+
+select initcap(concat('rohith',' ','yadav'));
+
+select upper('giripranay');
+
+select lower('GIRIPRANAY');
+
+
+select  sno||' '||name||' '||rank||' '||gender from class;
+
+
+
+
+
+
+
+create table gold (rate int);
+insert into gold values (72856);
+select * from gold;
+select rate, to_char(rate,'9,99,999.00')from gold;
+
+
+
+
+
+------------------------------------------------------DAY-5 JOINS-------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+----inner join------
+
+
+create table userinfo(userid number(5),
+                      username varchar(15),
+                      email varchar,
+                      stateid number(5));
+insert into userinfo values (2001,'Akhil','akhil@gmail.com',8),
+                             (2002,'Giri','giripranay@gmail.com',16),
+                             (2003,'Abdul','abdul@gmail.com',4);
+insert into userinfo (userid,username,email) values (2004,'rohith','rohith@gmail.com'),
+                             (2005,'kumar','kumar@gmail.com');
+select * from userinfo;
+
+
+
+create table stateinfo(stateid number(5),
+                        statename varchar(20),
+                        statecode varchar(4));
+insert into stateinfo values (8,'gujarat','GJ'),
+                              (16,'Andhra'||' '||'Pradesh','AP'),
+                              (4,'Telangana','TS'),
+                              (11,'Uttar'||' '||'Pradesh','UP'),
+                              (30,'Chennai','TN');
+select * from userinfo;
+                              
+select * from stateinfo;
+
+select * from userinfo inner join stateinfo
+        on userinfo.stateid = stateinfo.stateid;
+
+
+select username,email,statename 
+             from userinfo inner join stateinfo
+                on userinfo.stateid = stateinfo.stateid;
+
+insert into userinfo values (2006,'Pranay','pranay@gmail.com',16);
+
+
+
+---outer join----
+
+---left join-----/ ----left outer join-----
+
+select * from
+             userinfo as U left join stateinfo as S
+                on U.stateid = S.stateid;
+
+-----right join/right outer join-----
+
+select * from
+             userinfo as U right join stateinfo as S
+                on U.stateid = S.stateid;
+
+---full join/full outer join------
+
+select * from
+             userinfo as U full join stateinfo as S
+                on U.stateid = S.stateid;
+
+
+----------------------------------------------------------
+
+alter table userinfo add column districtid number(2);
+delete from userinfo where districtid =(5);
+delete from userinfo where districtid =(13);
+delete from userinfo where districtid =(null);
+    delete from userinfo where districtid = (2);
+delete from userinfo where districtid = (7);
+delete from userinfo where districtid =(5);
+---------------------------------------------------------------
+
+---3 table---
+
+update userinfo set districtid=5 where userid=2001;
+update userinfo set districtid=13 where userid=2002;                                     
+update userinfo set districtid=6 where userid=2004;
+update userinfo set districtid=8 where userid=2005;
+update userinfo set districtid=13 where userid=2006;
+
+
+create table districtinfo(districtid number(2),
+                           districtname varchar(20),
+                           stateid number(2));
+
+insert into districtinfo values (5,'rangapuram',8),
+                                 (13,'alluri',16),
+                                 (6,'bhadradri',4),
+                                 (8,'nalgonda',4);
+
+
+select * from districtinfo;
+select * from userinfo;
+select * from stateinfo;
+
+select * from
+        userinfo as U inner join stateinfo as S
+        on U.stateid = S.stateid
+        inner join districtinfo as D
+        on U.districtid=D.districtid;
+
+select U.username,S.statename,D.districtname,U.EMAIL from
+        userinfo as U inner join stateinfo as S
+        on U.stateid = S.stateid
+        inner join districtinfo as D
+        on U.districtid=D.districtid;
+
+
+select * from userinfo as U full join stateinfo as S
+            on U.stateid=S.stateid
+            full join districtinfo as D
+            on U.districtid=D.districtid;
+
+
+
+*************************************************************
+
+create table emp(Empno number (2),
+                  empname varchar (15),
+                  salary number (10),
+                  deptno number(3));
+
+insert into emp values (1,'pranay',125000,21);
+insert into emp values (2,'gokul',155000,23),
+                        (3,'giri',185200,25),
+                        (4,'rohith',162000,29);
+select * from emp;
+insert into emp (Empno,empname,salary) values (5,'abdul',225000);
+delete from emp where salary=225000;
+
+
+
+create table dept(deptno number(3),
+                   location varchar (12),
+                   dname varchar (15));
+
+insert into dept values (21,'hyderabad','software'),
+                         (23,'palwancha','ktps'),
+                         (25,'kothagudem','singareni'),
+                         (33,'hyderabad','microsoft');
+select * from dept;
+
+
+
+----left join----
+
+ SELECT  E.empname,D.dname
+          FROM  Emp AS E   LEFT JOIN  Dept AS D
+               ON  E.DEPTNO = D.DEPTNO ;
+
+
+----right join----
+
+SELECT  E.empname,D.dname
+          FROM  EMP AS E  RIGHT JOIN  DEPT AS D
+               ON  E.DEPTNO = D.DEPTNO;
+
+
+-----full join-----
+
+SELECT  E.empname,D.dname
+          FROM  EMP AS E  FULL JOIN  DEPT AS D
+               ON  E.DEPTNO = D.DEPTNO;
+
+
+
+
+----Displaying Unmatched records----
+
+----- left side table ----- 
+
+    SELECT  E.empname,D.dname
+       FROM  EMP AS E LEFT JOIN  DEPT AS D
+            ON  E.DEPTNO = D.DEPTNO 
+   WHERE  D.DNAME IS NULL;
+ 
+  
+
+------right side table---
+
+     SELECT  E.empname,D.dname
+        FROM  EMP AS E RIGHT JOIN  DEPT AS D
+             ON  E.DEPTNO = D.DEPTNO 
+    WHERE   E.EmpNAME IS NULL ;
+
+    
+
+ ------both tables------- 
+--------------------
+
+     SELECT  E.EMPNAME,D.DNAME
+        FROM  EMP AS E FULL JOIN  DEPT AS D
+             ON  E.DEPTNO = D.DEPTNO 
+     WHERE  D.DNAME IS NULL 
+                     OR
+                     E.EmpNAME IS NULL;
+
+
+
+
+
+----------------------------------------------------------------DAY-6---------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+            
+
+create table emp(eno int,
+                 ename text(15),
+                 salary number(8));
+desc table emp;
+insert into emp values (1,'gokul',120000),
+                        (2,'abdul',252000),
+                        (3,'rohith',215000);
+select * from emp;
+
+create table salgrade(grade number(1),
+                       losal number(7),
+                       hisal number(7));
+insert into salgrade values (1,100000,150000),
+                             (2,200000,250000),
+                             (3,250000,300000);
+select * from salgrade;
+
+select E.ename,E.salary,S.grade
+         from emp as E join salgrade as S
+         on E.salary between S.losal and S.hisal;
+
+
+
+select * from emp as E join salgrade as S
+              on E.salary between S.losal and S.hisal;
+
+
+-----display grade 4 employee list ?
+
+	SELECT E.ENAME,E.SALARY,S.GRADE 
+ 	   FROM EMP AS E JOIN SALGRADE AS S
+  	        ON E.SALARY BETWEEN S.LOSAL AND S.HISAL
+	WHERE S.GRADE = 2;
+
+
+    
+	SELECT E.ENAME,E.SALARY,S.GRADE 
+ 	   FROM EMP AS E JOIN SALGRADE AS S
+  	        ON E.SALARY BETWEEN S.LOSAL AND S.HISAL
+	WHERE S.GRADE = 1;
+
+
+    
+********************************************************************
+
+
+
+create table chocolate (name varchar(10),
+                         price number(5));
+insert into chocolate values ('dairymilk', 75),
+                              ('5star',25);
+
+create table quality (grade number,
+                       lowQ number(5),
+                       highQ number(5));
+alter table quality rename column lowQ  to minP;
+alter table quality rename column highQ to maxP;
+                       
+                       
+ insert into quality values (1,50,125),
+                             (2,10,50),
+                             (3,1,10);
+ select * from chocolate;
+ select * from quality;
+
+
+ select * from 
+              chocolate as C join quality as Q
+              on C.price between Q.minP and Q.maxP;
+
+
+
+select * from
+               chocolate as C join quality as Q
+                on C.price between Q.minP and Q.maxP
+                where Q.grade=2
+              
+
+
+
+-------------------------------------------------------------------------------------DAY-7--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+create schema padala;
+
+create table emp11(eno number (2),
+                   ename varchar (15),
+                   salary number (10),
+                   deptno number (3));
+
+insert into emp11 values (1,'giri',123456,21),
+                          (2,'rohith',12345,22),
+                          (3,'abdul',123456,23),
+                          (4,'pranay',23456,21),
+                          (5,'kumar',34256,24);
+select * from emp11;
+
+select deptno from emp11 group by deptno;
+select salary from emp11 group by salary; 
+select ename from emp11 group by ename;
+select deptno, count(*) from emp11 group by deptno;
+
+
+select deptno,min(salary) from emp11 group by deptno;
+select deptno,max(salary) from emp11 group by deptno;
+select deptno,avg(salary) from emp11 group by deptno;
+select deptno,sum(salary) from emp11 group by deptno;
+select sum(salary),deptno from emp11 group by deptno;
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+CREATE TABLE EMP(EMPNO INT ,
+                 ENAME VARCHAR(10),
+                  JOB VARCHAR(9),
+                   MGR NUMERIC(4),
+                   HIREDATE DATE,
+                   SAL number(7,2),
+                   COMM number(7,2),
+                   DEPTNO int);
+ desc table emp;
+
+INSERT INTO EMP VALUES
+(7369, 'SMITH', 'CLERK', 7902, '1980-12-17', 800, NULL, 20);
+INSERT INTO EMP VALUES
+(7499, 'ALLEN', 'SALESMAN', 7698, '20-FEB-1981', 1600, 300, 30);
+INSERT INTO EMP VALUES
+(7521, 'WARD', 'SALESMAN', 7698, '22-FEB-1981', 1250, 500, 30);
+INSERT INTO EMP VALUES
+(7566, 'JONES', 'MANAGER', 7839, '2-APR-1981', 2975, NULL, 20);
+INSERT INTO EMP VALUES
+(7654, 'MARTIN', 'SALESMAN', 7698, '28-SEP-1981', 1250, 1400, 30);
+INSERT INTO EMP VALUES
+(7698, 'BLAKE', 'MANAGER', 7839, '1-MAY-1981', 2850, NULL, 30);
+INSERT INTO EMP VALUES
+(7782, 'CLARK', 'MANAGER', 7839, '9-JUN-1981', 2450, NULL, 10);
+INSERT INTO EMP VALUES
+(7788, 'SCOTT', 'ANALYST', 7566, '09-DEC-1982', 3000, NULL, 20);
+INSERT INTO EMP VALUES
+(7839, 'KING', 'PRESIDENT', NULL, '17-NOV-1981', 5000, NULL, 10);
+INSERT INTO EMP VALUES
+(7844, 'TURNER', 'SALESMAN', 7698, '8-SEP-1981', 1500, 0, 30);
+INSERT INTO EMP VALUES
+(7876, 'ADAMS', 'CLERK', 7788, '12-JAN-1983', 1100, NULL, 20);
+INSERT INTO EMP VALUES
+(7900, 'JAMES', 'CLERK', 7698, '3-DEC-1981', 950, NULL, 30);
+INSERT INTO EMP VALUES
+(7902, 'FORD', 'ANALYST', 7566, '3-DEC-1981', 3000, NULL, 20);
+INSERT INTO EMP VALUES
+(7934, 'MILLER', 'CLERK', 7782, '23-JAN-1982', 1300, NULL, 10);
+
+select * from emp;
+
+select deptno from emp group by deptno;
+select deptno, sum(sal) from emp group by deptno;
+select deptno, min(sal) from emp group by deptno;
+select  deptno,max(sal) from emp group by deptno;
+select deptno, count(*) from emp group by deptno;
+select sal, count(deptno) from emp group by sal;
+select job,min(sal) from emp group by job;
+
+select deptno, avg(sal) from emp group by deptno;
+select sal, from emp group by sal;
+
+select job,count(*) from emp group by job;
+
+
+  SELECT   CASE 
+	    WHEN SAL BETWEEN 0 AND 2000 THEN '0-2000'
+                    WHEN SAL BETWEEN 2001 AND 4000 THEN '2001-4000'
+	    WHEN SAL > 4000 THEN ' > 4000'
+        end as sal,count(*)
+    FROM EMP
+    GROUP BY CASE 
+	       WHEN SAL BETWEEN 0 AND 2000 THEN '0-2000'
+	       WHEN SAL BETWEEN 2001 AND 4000 THEN '2001-4000'
+	       WHEN SAL > 4000 THEN ' > 4000'
+                       END;
+
+
+   SELECT DEPTNO,COUNT(*) FROM EMP group by deptno having COUNT(*) <4;
+select deptno, count(*) from emp group by deptno;
+
+
+SELECT JOB,COUNT(*)
+   FROM EMP 
+   WHERE JOB IN ('CLERK','MANAGER','SALESMAN')
+   GROUP BY JOB
+   HAVING COUNT(*) > 2;
+
+select job,count(*) from emp group by job;
+
+
+
+ SELECT deptno,job,SUM(sal)
+    FROM emp 
+    GROUP BY deptno,job ;
+   
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE EMP45(EMPNO INT ,
+                 ENAME VARCHAR(10),
+                  JOB VARCHAR(9),
+                   SAL number(7,2),
+                   COMM number(7,2),
+                   DEPTNO int);
+ desc table emp45;
+alter table emp45 rename column salary to SAL;
+ alter table emp45 alter column sal set data type number(9,2);
+ 
+ insert into emp45 values (1,'giri','ktps',125000,5000,21),
+                        (2,'abdul','singareni',152400,5100,21),
+                        (3,'gokul','ktps',125000,4500,23),
+                        (4,'rohith','software',125480,5140,25),
+                        (5,'kumar','software',145200,5000,29),
+                        (6,'pranay','singareni',152400,5100,25);
+
+select * from emp45;
+alter table emp45 alter column comm set data type number(12,5);
+select sal,count(*) from emp45 group by sal ;
+select deptno from emp45 group by deptno;
+select deptno,min(sal) from emp45 group by deptno;
+select deptno,max(sal) from emp45 group by deptno;
+select deptno,avg(sal) from emp45 group by deptno;
+select deptno,sum(sal) from emp45 group by deptno;
+
+select job, min(sal) from emp45 group by job;
+select job, max(sal) from emp45 group by job;
+select job, avg(sal) from emp45 group by job;
+
+
+select 
+     case
+            when comm between 120000 and 140000 then 'OK'
+            when comm between 140000 and 149000 then 'GOOD'
+            when comm between 150000 and 190000 then 'NICE'
+        end as comm,count(*) 
+        from emp45
+        group by case
+        when sal between 2000 and 4000 then 'OK'
+            when comm between 4000 and 4900 then 'GOOD'
+            when comm > 5000 then 'NICE'
+            end;
+
+
+SELECT
+    CASE
+        WHEN comm BETWEEN 120000 AND 140000 THEN 'OK'
+        WHEN comm BETWEEN 140000 AND 149000 THEN 'GOOD'
+        WHEN comm BETWEEN 150000 AND 190000 THEN 'NICE'
+    END AS comm,
+    COUNT(*)
+FROM emp45
+GROUP BY
+    CASE
+        WHEN comm BETWEEN 2000 AND 4000 THEN 'OK'
+        WHEN comm BETWEEN 4000 AND 4900 THEN 'GOOD'
+        WHEN comm > 5000 THEN 'NICE'
+    END;
+
+
+
+
+
+
+ SELECT   CASE 
+	    WHEN SAL BETWEEN 0 AND 135000 THEN '0-2000'
+                    WHEN SAL BETWEEN 140000 AND 150000 THEN '2001-4000'
+	    WHEN SAL > 150000 THEN ' >150000'
+        end as sal,count(*)
+    FROM EMP45
+    GROUP BY CASE 
+               WHEN SAL BETWEEN 0 AND 135000 THEN '0-2000'
+               WHEN SAL BETWEEN 140000 AND 150000 THEN '2001-4000'
+	           WHEN SAL > 150000 THEN ' GOOD'
+                       END;
+
+SELECT 
+    CASE 
+        WHEN SAL BETWEEN 0 AND 135000 THEN '0-135000'
+        WHEN SAL BETWEEN 140000 AND 150000 THEN '140000-150000'
+        WHEN SAL > 150000 THEN '>150000'
+    END AS sal,
+    COUNT(*) 
+FROM EMP45
+GROUP BY 
+    CASE 
+        WHEN SAL BETWEEN 0 AND 135000 THEN '0-135000'
+        WHEN SAL BETWEEN 140000 AND 150000 THEN '140000-150000'
+        WHEN SAL > 150000 THEN '>150000'
+    END;
+
+
+------------------------------------------------------------------------------------------DAY-8-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Select 1 ID;
+
+select 1+2 sum;
+
+select 1||null ID;
+
+select 'ravi'||null;
+
+
+
+select 'ravi'||'null';
+
+
+
+select NVL(1,2); ----=>1
+select NVL(NULL,2); -----=>2
+select NVL(NULL,NULL); ------=>NULL 
+
+select nvl(2,null);
+
+
+----------NVL2 =>3 ARGUMENST 
+
+select NVL2(1,2,3);------==>2
+
+select NVL2(1,NULL,3);------==>NULL
+
+select NVL2(NULL,NULL,3);------==>3
+
+select NVL2(NULL,NULL,NULL);-------==>NULL ;
+
+----COALESCE:
+
+---N ARGUMENTS 
+-----IT WILL PICK 1ST NOT NULL VALUE
+ 
+COALESCE(1,2,3,4);----==>1
+COALESCE(NULL,2,3,4);---==>2
+COALESCE(10,NULL,2,3,4);----==>10
+COALESCE(NULL,NULL);---==>NULL 
+
+ 
+ 
+---------------------------------------------------------------------------------------- 
+ 
+ 
+ 
+ CREATE TABLE TE1(ID NUMBER(5,2));
+
+                   INSERT INTO TE1 VALUES(123.23);
+---IT NOT POSSIBLE------ ---   INSERT INTO TE1 VALUES(1234.23);5-2=3
+
+                  INSERT INTO TE1 VALUES(124.23567889);
+                  INSERT INTO TE1 VALUES(null);
+
+                  SELECT * FROM TE1;
+
+    alter table te1 add column sal int;
+
+update te1 set sal = 10 where id = 123.23;
+
+SELECT  SUM(SAL) FROM TE1;
+select nvl(id::varchar,'NA'), nvl(sal::varchar,'NA') from te1;
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+CREATE TABLE EMP_T(ID    NUMBER,
+                   NAME VARCHAR,
+                   CITY TEXT ,
+                   PASSPORT STRING,
+                   SALARY NUMBER(10,2));
+alter table emp_t drop column passport;
+desc table emp_t;
+insert into emp_t values (1,'pranay','palvancha',125000),
+                          (2,'gokul','palluru',152000),
+                          (3,'giri','hyderabad',null);
+
+select * from emp_t; 
+
+select avg(salary) from emp_t;
+select min(salary) from emp_t;
+select max(salary) from emp_t;
+select sum(salary) from emp_t;
+select count(salary) from emp_t;
+
+select id||name||city||nvl(salary::varchar,'NA') from emp_t;
+select nvl(salary::varchar,'NA') from emp_t;
+
+------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------DAY-10-------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ create table emp11(eno number (2),
+                   ename varchar (15),
+                   salary number (10),
+                   deptno number (3));
+
+insert into emp11 values (1,'giri',4500,21),
+                          (2,'rohith',2500,22),
+                          (3,'abdul',3200,23),
+                          (4,'pranay',2300,21),
+                          (5,'kumar',1500,24);
+desc table emp11;
+ select * from emp11;
+alter table emp11 drop column expense, in_sal ;
+truncate table emp11;
+
+alter table emp11 add column expense number(4);
+
+
+update emp11 set expense= 
+                  case
+                       when eno=1 then 2100
+                       when eno=2 then 1200
+                       when eno=4 then 1100
+                       else 1600
+                       end;
+
+select ename,salary,expense, case 
+                       when expense between 1000 and 1500 then 'LOWEX'
+                       when expense between 1501 and 2000 then 'MEDEX'
+                       when expense >2000 then 'HIGHEX'
+                       end expense_range from emp11;
+
+
+------------increase salary 15% for giri & abdul   and   10% for others----
+alter table emp11 add column in_sal int;
+update emp11 set in_sal = 
+                    case ename
+                      when 'giri'  then salary + (salary*0.15)
+                      when 'rohith'  then salary + (salary*0.20)
+                      else salary+ (salary*0.10)
+                      end ;
+
+
+
+
+create table student (sno int,
+                      name varchar,
+                      s1 int,
+                      s2 int,
+                      s3 int);
+desc table student;
+insert into student values (1,'rohith',85,59,33),
+                              (2,'pranay',88,78,45);
+
+select * from student;
+
+
+select name  S1 + S2 + S3 as totalmarks,
+                (S1+S2+S3)/3 as avgmarks,
+                ((S1+S2+S3)/300)*100 as percentage,
+                case 
+                    when S1 >= 35 and S2 >= 35 and S3 >= 35 then 'PASS'
+                   else 'FAIL' end as result 
+                   from student;
+
+
+
+
+
+SELECT 
+    sno,
+    name,
+    S1 + S2 + S3 AS totalmarks,
+    (S1 + S2 + S3) / 3 AS avgmarks,
+    ((S1+S2+S3)/300)*100 AS percentage, -- Assuming you want percentage out of 100, not dividing by 100
+    CASE 
+        WHEN S1 >= 35 AND S2 >= 35 AND S3 >= 35 THEN 'PASS'
+        ELSE 'FAIL' 
+    END AS "PASS/FAIL"
+FROM 
+    student;
+
+
+
+
+select initcap(name) "Name" from student;
+
+
+ 
+------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------DAY-11---------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------                  
+
+
+create table class(sno int,
+                   name varchar (15),
+                   sal number (7),
+                   hiredate date);
+
+select current_date;
+
+insert into class values (1,'pavani',1200,'2024-06-04'),
+                          (2,'manoj',1500,'2024-06-05'),
+                          (3,'chandu',1300,'2024-06-06'),
+                          (4,'pranay',1500,'2024-06-07'),
+                          (5,'rohith',1100,'2024-06-08');
+select * from class;
+update class set sno=5 where name= 'rohith';
+
+------------ RANK,DENSE_RANK ()-------------- 
+
+
+select sal,name, rank() over (order by sal asc ) from class;
+
+select sal,name, rank() over (order by sal , hiredate ) as result from class; 
+
+select sal,name, rank() over (order by sal desc ) from class;
+select sal,name, rank() over (order by sal desc , hiredate desc) from class;
+
+select sal,name, dense_rank() over (order by sal asc ) from class;
+select sal,name, dense_rank() over (order by sal asc, hiredate ) from class;
+
+select sal,name, dense_rank() over (order by sal desc ) from class;
+select sal,name, dense_rank() over (order by sal desc, hiredate desc ) from class;
+
+
+alter table class add column deptno int;
+update class set deptno=
+               case   when sno=1 then 20
+                       when sno=2 then 20
+                       when sno=3 then 19
+                       else 21
+                       end;
+select * from class;
+
+ 
+ 
+ -------------PARTITION BY clause---------------
+
+select name,hiredate,sal, dense_rank() over (partition by deptno order by sal desc) from class;
+select name,hiredate,sal, dense_rank() over (partition by deptno order by sal asc) from class;
+
+select name,hiredate,sal, rank() over (partition by deptno order by sal asc) from class;
+select name,hiredate,sal, rank() over (partition by deptno order by sal desc) from class;
+
+
+
+
+----------------------ROW_NUMBER()-------------- 
+
+
+select sno,name,sal,hiredate, row_number() over (order by sal asc ) from class;
+select sno,name,sal,hiredate, row_number() over (order by sal desc ) from class;
+
+--------------------LAG & LEAD ()------------------
+
+ SELECT SNO,NAME,HIREDATE,SAL, 
+      LAG(SAL,1) OVER (ORDER BY HIREDATE ASC)
+ FROM class;
+
+select sno,name,hiredate,sal, lag(hiredate,2) over (order by sal) from class;
+
+ 
+ SELECT SNO,NAME,HIREDATE,SAL, 
+      LEAD(SAL,1) OVER (ORDER BY HIREDATE ASC)
+ FROM class;
+
+ select sno,name,hiredate,sal, lead(hiredate,2) over (order by sal) from class;
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------DAY-12----------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+create schema nothing;
+CREATE TABLE emp(EMPNO INT ,
+                 ENAME VARCHAR(10),
+                  JOB VARCHAR(9),
+                   MGR NUMERIC(4),
+                   HIREDATE DATE,
+                   SAL number(7,2),
+                   COMM number(7,2),
+                   DEPTNO int);
+ desc table emp;
+
+CREATE TABLE EMP(EMPNO INT ,
+                 ENAME VARCHAR(10),
+                  JOB VARCHAR(9),
+                   MGR NUMERIC(4),
+                   HIREDATE DATE,
+                   SAL number(7,2),
+                   COMM number(7,2),
+                   DEPTNO int);
+ desc table emp;
+
+INSERT INTO EMP VALUES
+(7369, 'SMITH', 'CLERK', 7902, '1980-12-17', 800, NULL, 20);
+INSERT INTO EMP VALUES
+(7499, 'ALLEN', 'SALESMAN', 7698, '20-FEB-1981', 1600, 300, 30);
+INSERT INTO EMP VALUES
+(7521, 'WARD', 'SALESMAN', 7698, '22-FEB-1981', 1250, 500, 30);
+INSERT INTO EMP VALUES
+(7566, 'JONES', 'MANAGER', 7839, '2-APR-1981', 2975, NULL, 20);
+INSERT INTO EMP VALUES
+(7654, 'MARTIN', 'SALESMAN', 7698, '28-SEP-1981', 1250, 1400, 30);
+INSERT INTO EMP VALUES
+(7698, 'BLAKE', 'MANAGER', 7839, '1-MAY-1981', 2850, NULL, 30);
+INSERT INTO EMP VALUES
+(7782, 'CLARK', 'MANAGER', 7839, '9-JUN-1981', 2450, NULL, 10);
+INSERT INTO EMP VALUES
+(7788, 'SCOTT', 'ANALYST', 7566, '09-DEC-1982', 3000, NULL, 20);
+INSERT INTO EMP VALUES
+(7839, 'KING', 'PRESIDENT', NULL, '17-NOV-1981', 5000, NULL, 10);
+INSERT INTO EMP VALUES
+(7844, 'TURNER', 'SALESMAN', 7698, '8-SEP-1981', 1500, 0, 30);
+INSERT INTO EMP VALUES
+(7876, 'ADAMS', 'CLERK', 7788, '12-JAN-1983', 1100, NULL, 20);
+INSERT INTO EMP VALUES
+(7900, 'JAMES', 'CLERK', 7698, '3-DEC-1981', 950, NULL, 30);
+INSERT INTO EMP VALUES
+(7902, 'FORD', 'ANALYST', 7566, '3-DEC-1981', 3000, NULL, 20);
+INSERT INTO EMP VALUES
+(7934, 'MILLER', 'CLERK', 7782, '23-JAN-1982', 1300, NULL, 10);
+
+select * from emp;
+
+select * from emp where ename= 'BLAKE';
+
+select sal from emp where ename = 'adams';
+
+SELECT * from emp where sal > 2580;
+
+---display employees earning more than blake ?
+
+select * from emp where sal >(select sal from emp where ename= 'BLAKE');
+
+---employees who are senior to king ? 
+
+select hiredate from emp where ename= 'KING';
+select hiredate from emp where HIREDATE < (select hiredate from emp where ename= 'KING');
+
+--- find name of the employee earning max salary ? 
+
+SELECT MAX(SAL) FROM EMP;
+SELECT * FROM EMP WHERE SAL = (SELECT MAX(SAL) FROM EMP);
+
+------ => display 2nd max salary ? 
+
+      SELECT  MAX(SAL)
+      FROM EMP
+      WHERE SAL < (SELECT MAX(SAL) FROM EMP)     
+       
+----  => name of the employee earning 2nd max salary ? 
+SELECT ename,sal FROM EMP WHERE SAL =(SELECT MAX(SAL) FROM EMP WHERE SAL < (SELECT MAX(SAL) FROM EMP));
+
+SELECT DISTINCT SAL FROM EMP ORDER BY SAL DESC ;
+
+SELECT MIN(HIREDATE) FROM EMP;
+
+
+----find name of the employee having max experience ?
+
+SELECT EMPNO,ENAME,HIREDATE FROM EMP WHERE HIREDATE = (SELECT MIN(HIREDATE) FROM EMP);
+SELECT * FROM EMP WHERE HIREDATE = (SELECT MIN(HIREDATE) FROM EMP);
+
+
+----delete the employee having max experience ? 
+
+DELETE FROM EMP WHERE SAL = (SELECT MIN(SAL) FROM EMP);
+SELECT * FROM EMP;
+
+
+----swap employee salaries whose empno = 7499,7521 ?
+
+SELECT EMPNO,ENAME,SAL FROM EMP WHERE EMPNO IN (7499,7521);
+
+TRUNCATE TABLE EMP;
+UPDATE EMP SET SAL = CASE  EMPNO
+                           WHEN 7499 THEN (SELECT SAL FROM EMP WHERE EMPNO = 7521)
+                           WHEN 7521 THEN (SELECT SAL FROM EMP WHERE EMPNO = 7499)
+                            END WHERE EMPNO IN (7499,7521) ;
+
+
+UPDATE EMP SET ENAME = CASE  EMPNO
+                           WHEN 7499 THEN (SELECT ENAME FROM EMP WHERE EMPNO = 7521)
+                           WHEN 7521 THEN (SELECT ENAME FROM EMP WHERE EMPNO = 7499)
+                            END WHERE EMPNO IN (7499,7521) ;   
+
+
+
+
+
+CREATE TABLE DEPT
+(DEPTNO INT primary key,
+DNAME VARCHAR(14),
+LOC VARCHAR(13) );
+
+INSERT INTO DEPT VALUES (10, 'ACCOUNTING', 'NEW YORK');
+INSERT INTO DEPT VALUES (20, 'RESEARCH', 'DALLAS');
+INSERT INTO DEPT VALUES (30, 'SALES', 'CHICAGO');
+INSERT INTO DEPT VALUES (40, 'OPERATIONS', 'BOSTON');
+
+SELECT * FROM DEPT;
+
+SELECT LOC FROM DEPT;
+
+-----display name of the employees working at NEW YORK loc ?
+
+SELECT ENAME FROM EMP WHERE DEPTNO= (SELECT DEPTNO FROM DEPT WHERE LOC = 'NEW YORK');   -----SUBQUERY---
+SELECT ENAME,DEPTNO FROM EMP WHERE DEPTNO= (SELECT DEPTNO FROM DEPT WHERE LOC = 'NEW YORK');  ---||----
+
+SELECT ENAME,DNAME FROM EMP INNER JOIN DEPT 
+                             ON EMP.DEPTNO = DEPT.DEPTNO        -------JOIN----------
+                             WHERE LOC= 'NEW YORK';
+
+
+-----employees working at NEW YORK,CHICAGO locations ?
+
+SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC IN ('NEW YORK','CHICAGO'));
+SELECT * FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC = 'NEW YORK');
+
+-----multi row subqueries :- 
+ ------------------------------
+
+------ => if subquery returns more than one row then it is called m. ulti-row subquery
+
+ --- SELECT columns
+-----FROM tabname
+--- WHERE colname OP (SELECT STATEMENT) ; 
+
+  --=> OP must be IN,NOT IN,ANY,ALL
+
+ --Ex :- 
+
+ --- employees working at NEW YORK,CHICAGO locations ?
+
+     SELECT *
+     FROM EMP
+     WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC IN ('NEW YORK','CHICAGO'));
+
+select * from emp;
+select * from dept;
+
+
+ --- => employees earning more than all managers ?
+
+       SELECT * FROM EMP WHERE SAL > ALL(SELECT SAL FROM EMP 
+                                         WHERE JOB='MANAGER');
+ 
+----  => employees earning more than atleast one manager ?
+
+ SELECT * FROM EMP WHERE SAL > ANY ( SELECT SAL FROM EMP WHERE JOB = 'MANAGER' );
+
+     
+SELECT * FROM EMP WHERE SAL > ANY (SELECT SAL FROM EMP WHERE JOB ='MANAGER');
+
+
+
+---------------------------------------------------------------DAY-13---------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+with pavani as 
+(select * from emp)  select * from pavani;
+
+with pavani as 
+(select * from emp)
+pravllika as
+(select * from dept)
+select * from pavani join pravllika on pavani.deptno = pravllika.deptno;
+
+
+
+select ename,rnk from (select ename,dense_rank() over(order by sal desc) as rnk from emp ) where rnk <=3;
+
+
+select ename,dense_rank() over(order by sal desc) as rnk from emp qualify rnk<=3;
+
+
+---scalar subqueries--
+
+select 
+(select count(*)  from emp) as no_of_rec_in_emp,
+(select count(*)  from dept) as no_of_records_in_dept;
+
+
+SELECT  DEPTNO,SUM(SAL) AS DEPT_TOTSAL
+      FROM EMP
+      GROUP BY DEPTNO ;
+
+      select sum(sal) from emp;
+
+
+
+      SELECT  DEPTNO,SUM(SAL) AS DEPT_TOTSAL,
+	          (SELECT SUM(SAL) FROM EMP) AS TOTSAL
+      FROM EMP
+      GROUP BY DEPTNO ;
+
+
+SELECT DEPTNO, SUM(SAL) AS DEPT_TOTSAL,
+       (SELECT SUM(SAL) FROM EMP) AS TOTSAL
+FROM EMP
+GROUP BY DEPTNO;
+
+select avg(sal) from emp where deptno = 10;
+select avg(sal) from emp where deptno = 20;
+select avg(sal) from emp where deptno = 30;
+
+
+select ename,sal,deptno from emp where sal > (select avg(sal) from emp where deptno= emp.deptno);
+
+select a.ename,a.sal,a.deptno from emp as a where sal < (select avg(sal) from emp as b where deptno= a.deptno);
+
